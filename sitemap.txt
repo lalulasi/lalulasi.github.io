@@ -1,2 +1,7 @@
-http://example.com/2022/12/13/%E7%AC%AC%E4%B8%80%E8%AF%BE/
-http://example.com/
+http://lalulasi.github.io/2022/12/13/first_lesson/
+http://lalulasi.github.io/tags/index.html
+http://lalulasi.github.io/categories/index.html
+http://lalulasi.github.io/
+http://lalulasi.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/
+http://lalulasi.github.io/tags/%E6%A0%87%E5%87%86%E6%97%A5%E8%AF%AD/
+http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/
