@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://lalulasi.github.io/2022/12/13/first_lesson/</loc>
+    <loc>http://lalulasi.github.io/2022/12/14/japanese/second/</loc>
+    
+    <lastmod>2022-12-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lalulasi.github.io/2022/12/13/japanese/first/</loc>
     
     <lastmod>2022-12-14</lastmod>
     
