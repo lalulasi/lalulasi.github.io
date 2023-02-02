@@ -1,3 +1,5 @@
+http://lalulasi.github.io/2023/02/01/csharp/1/
+http://lalulasi.github.io/2023/02/01/csharp/2/
 http://lalulasi.github.io/2022/12/19/japanese/7/
 http://lalulasi.github.io/2022/12/19/japanese/6/
 http://lalulasi.github.io/2022/12/19/japanese/5/
@@ -27,4 +29,7 @@ http://lalulasi.github.io/categories/index.html
 http://lalulasi.github.io/
 http://lalulasi.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/
 http://lalulasi.github.io/tags/%E6%A0%87%E5%87%86%E6%97%A5%E8%AF%AD/
+http://lalulasi.github.io/tags/C/
+http://lalulasi.github.io/tags/CS/
 http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/
+http://lalulasi.github.io/categories/C/
