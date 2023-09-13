@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>Azure Machine Learning Begining</title>
+      <link href="/2023/09/13/ms/ml/1/"/>
+      <url>/2023/09/13/ms/ml/1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> AI&amp;IOT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> microsoft </tag>
+            
+            <tag> Azure </tag>
+            
+            <tag> machine learning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Azure Begining</title>
+      <link href="/2023/09/13/ms/Azure/1/"/>
+      <url>/2023/09/13/ms/Azure/1/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/Azure/title.png"><br>作为一个老开发，云服务也用了不少。现在从使用者变成了技术支持，尤其是接触了新的领域，从头开始记录整个学习和工作过程。</p><span id="more"></span><h3 id="开篇介绍"><a href="#开篇介绍" class="headerlink" title="开篇介绍"></a>开篇介绍</h3><p>简单的介绍让GPT帮我写吧。<br>Azure是由微软公司提供的云计算平台和服务。它是一个全球性的云计算解决方案，旨在帮助个人、组织和企业构建、部署和管理各种应用程序和服务，从简单的网站到复杂的企业级应用程序。<br>Azure是一个强大而灵活的云平台，可以帮助组织在云中构建、管理和扩展应用程序，提高效率、降低成本，并为未来的数字化转型提供支持。无论您是一家初创企业还是一家大型企业，Azure都可以提供适合您需求的云解决方案。<br>全球性覆盖：Azure拥有众多数据中心和服务器分布在全球范围内，覆盖了多个地理区域，这使得用户可以将应用程序和数据部署在离其用户最近的数据中心，以实现更低的延迟和更好的性能。<br>Azure有以下特点：<br>1.广泛的服务：Azure提供了丰富的云服务，包括计算、存储、数据库、人工智能、分析、物联网、区块链等多种类型的服务，以满足不同需求和行业的要求。<br>2.弹性伸缩：Azure允许用户根据需求快速扩展或缩减计算资源，从而降低了成本并确保应用程序的高可用性。<br>3.安全性：Azure提供了多层次的安全措施，包括身份验证、数据加密、威胁检测和防御等，以保护用户的数据和应用程序安全。<br>4.开放性：Azure支持多种编程语言、操作系统和开发工具，使开发人员可以使用他们熟悉的技术来构建应用程序。<br>5.集成和扩展：Azure与其他微软产品（如Office 365、Dynamics 365）以及第三方应用程序和服务集成紧密，帮助用户构建全面的解决方案。<br>6.计费模型：Azure提供多种计费选项，包括按使用量计费、预留实例、混合使用权等，以满足不同组织的财务需求。<br>7.生态系统：Azure拥有庞大的合作伙伴生态系统，包括独立软件供应商、咨询公司和培训提供商，可以提供技术支持和解决方案。</p><hr><h3 id="服务提供"><a href="#服务提供" class="headerlink" title="服务提供"></a>服务提供</h3><p>下图展示了Azure提供的服务（时效性无法确认，今后关注AI&amp;IOT和相关即可）<br><img src="/images/Azure/azure_services.png"></p><hr><h3 id="服务使用"><a href="#服务使用" class="headerlink" title="服务使用"></a>服务使用</h3><p>以Azure Machine Learning为例，简单看一下如何创建并使用一个服务。</p><ol><li>注册Azure账号（忽略）</li><li>下图中可以查看到一些Azure提供的服务，选择Azure机器学习<br><img src="/images/Azure/services_page.png"></li><li>填写或选择详细的创建信息，选择subscription，选择包括storage在内的各个关联服务，Azure的服务互相之间都会调用，因此在创建ML workspace时，如果不自己定义，Azure也会帮助你创建那些默认需要调用的服务，例如storage。<br><img src="/images/Azure/create_ml2.png"><br><img src="/images/Azure/create_ml_storage.png"></li><li>创建成功后，即可看到这些信息，如果作为外部的服务开发者可以下载左上角的config.json获取配置文件。<br><img src="/images/Azure/create_ml.png"></li></ol><hr><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上是对于整体服务的简单介绍和使用，单一服务的使用并不复杂，各个服务内部需要更深入的研究和了解，目前助攻方向还是放在AML上，等整体的K8S环境搭完可以尝试配上虚拟机等服务，搭一个完整的开发环境和训练环境。但是我之前创建的VM好像在家中的网络没办法访问到，这点之后再去查看。d</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI&amp;IOT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> microsoft </tag>
+            
+            <tag> Azure </tag>
+            
+            <tag> others </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JUC原子类</title>
       <link href="/2023/03/28/java/concurrency/4/"/>
       <url>/2023/03/28/java/concurrency/4/</url>
