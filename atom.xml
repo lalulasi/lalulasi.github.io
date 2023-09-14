@@ -6,7 +6,7 @@
   <link href="http://lalulasi.github.io/atom.xml" rel="self"/>
   
   <link href="http://lalulasi.github.io/"/>
-  <updated>2023-09-14T01:20:39.951Z</updated>
+  <updated>2023-09-14T14:26:10.907Z</updated>
   <id>http://lalulasi.github.io/</id>
   
   <author>
@@ -18,11 +18,15 @@
   
   <entry>
     <title>Azure Machine Learning Begining</title>
-    <link href="http://lalulasi.github.io/2023/09/13/ms/ml/1/"/>
-    <id>http://lalulasi.github.io/2023/09/13/ms/ml/1/</id>
-    <published>2023-09-13T13:50:00.000Z</published>
-    <updated>2023-09-14T01:20:39.951Z</updated>
+    <link href="http://lalulasi.github.io/2023/09/14/ms/ml/1/"/>
+    <id>http://lalulasi.github.io/2023/09/14/ms/ml/1/</id>
+    <published>2023-09-14T13:50:00.000Z</published>
+    <updated>2023-09-14T14:26:10.907Z</updated>
     
+    <content type="html"><![CDATA[<p><img src="/images/machinelearning/1.jpg"><br>Azure Machine Learning（Azure ML）是微软Azure云平台上的一项机器学习服务，它旨在简化和加速机器学习模型的开发、训练、部署和管理。</p><span id="more"></span><h3 id="AML"><a href="#AML" class="headerlink" title="AML"></a>AML</h3><p>Azure ML提供了一整套工具和资源，帮助数据科学家和开发人员更轻松地构建和运行机器学习项目，无论是针对传统的机器学习任务还是深度学习任务。</p><hr><h3 id="数据、算法、计算力（人工智能）"><a href="#数据、算法、计算力（人工智能）" class="headerlink" title="数据、算法、计算力（人工智能）"></a>数据、算法、计算力（人工智能）</h3><p>计算⼒之CPU、GPU对⽐：<br>CPU主要适合I\O密集型的任务<br>GPU主要适合计算密集型任务</p><p>什么类型的程序适合在GPU上运⾏？<br>（1）计算密集型的程序。<br>所谓计算密集型(Compute-intensive)的程序，就是其⼤部分运⾏时间花在了寄存器<br>运算上，寄存器的速度和处理器的速度相当，从寄存器读写数据⼏乎没有延时。可<br>以做⼀下对⽐，读内存的延迟⼤概是⼏百个时钟周期；读硬盘的速度就不说了，即<br>便是SSD, 也实在是太慢了。<br>（2）易于并⾏的程序。<br>GPU其实是⼀种SIMD(Single Instruction Multiple Data)架构， 他有成百上千个<br>核，每⼀个核在同⼀时间最好能做同样的事情。</p><h3 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h3><p>机器学习是从数据中⾃动分析获得模型，并利⽤模型对未知数据进⾏预测。</p><h3 id="机器学习工作流程"><a href="#机器学习工作流程" class="headerlink" title="机器学习工作流程"></a>机器学习工作流程</h3><p><img src="/images/machinelearning/process.png"></p><hr><h3 id="数据与特征工程"><a href="#数据与特征工程" class="headerlink" title="数据与特征工程"></a>数据与特征工程</h3><p>数据基本处理<br>即对数据进⾏缺失值、去除异常值等处理<br>特征⼯程<br>什么是特征⼯程<br>特征⼯程(Feature Engineering)是使⽤专业背景知识和技巧处理数据，使得特征能<br>在机器学习算法上发挥更好的作⽤的过程。</p><p>注：业界⼴泛流传：数据和特征决定了机器学习的上限，⽽模型和算法只是<br>逼近这个上限⽽已。</p><hr><h3 id="机器学习算法分类"><a href="#机器学习算法分类" class="headerlink" title="机器学习算法分类"></a>机器学习算法分类</h3><table><thead><tr><th></th><th>In</th><th>Out</th><th>目的</th><th>案例</th></tr></thead><tbody><tr><td>监督学习(supervisedlearning)</td><td>有标签</td><td>有反馈</td><td>预测结果</td><td>猫狗分类，房价预测</td></tr><tr><td>⽆监督学习(unsupervisedlearning)</td><td>⽆标签</td><td>⽆反馈</td><td>发现潜在结构</td><td>“物以类聚，⼈以群分”</td></tr><tr><td>半监督学习(SemiSupervisedLearning)</td><td>部分有标签，部分⽆标签</td><td>有反馈</td><td>降低数据标记的难度</td><td></td></tr><tr><td>强化学习(reinforcementlearning)</td><td>决策流程及激励系统</td><td>⼀系列⾏动</td><td>⻓期利益最⼤化</td><td>学下棋</td></tr></tbody></table><hr><h3 id="模型评估"><a href="#模型评估" class="headerlink" title="模型评估"></a>模型评估</h3><p>模型评估是模型开发过程不可或缺的⼀部分。它有助于发现表达数据的最佳模型和所选模型将来⼯作的性能如何。<br>按照数据集的⽬标值不同，可以把模型评估分为分类模型评估和回归模型评估。</p><ul><li>分类模型评估</li></ul><p><img src="/images/machinelearning/cancer.png"></p><p>准确率<br>预测正确的数占样本总数的⽐例。<br>其他评价指标：精确率、召回率、F1-score、AUC指标等</p><ul><li>回归模型评估</li></ul><p><img src="/images/machinelearning/house.png"></p><p>均⽅根误差（Root Mean Squared Error，RMSE）<br>RMSE是⼀个衡量回归模型误差率的常⽤公式。 不过，它仅能⽐较误差是相同<br>单位的模型。<br>RMSE &#x3D;a 为真实值；p 为预测值</p><p>举例：<br>假设上⾯的房价预测，只有五个样本，对应的<br>真实值为：100,120,125,230,400<br>预测值为：105,119,120,230,410</p><p>那么使⽤均⽅根误差求解得：</p><p><img src="/images/machinelearning/%E5%9D%87%E6%96%B9%E6%A0%B9.png"></p><p>其他评价指标：<br>相对平⽅误差（Relative Squared Error，RSE）、<br>平均绝对误差（Mean Absolute Error，MAE)、<br>相对绝对误差（Relative Absolute Error，RAE)</p><ul><li>拟合</li></ul><p>模型评估⽤于评价训练好的的模型的表现效果，其表现效果⼤致可以分为两类：过<br>拟合、⽋拟合。</p><ul><li>⽋拟合</li></ul><p>因为机器学习到的天鹅特征太少了，导致区分标准太粗糙，不能准确识别出天鹅</p><ul><li>过拟合</li></ul><p>所建的机器学习模型或者是深度学习模型在训练样本中表<br>现得过于优越，导致在测试数据集中表现不佳。</p><p>机器已经基本能区别天鹅和其他动物了。然后，很不巧已有的天鹅图⽚全是⽩天鹅<br>的，于是机器经过学习后，会认为天鹅的⽻⽑都是⽩的，以后看到⽻⽑是⿊的天鹅<br>就会认为那不是天鹅。</p><hr><h3 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h3><p>在机器学习中，超参数（Hyperparameters）是指那些不能通过模型训练学习得到的参数，需要人工设定的参数。超参数对于模型的性能和效果有着重要的影响，因此其选择和调整是机器学习中的重要任务。</p><p>常见的超参数包括学习率、正则化参数、迭代次数、批量大小、隐藏层的神经元数量等。这些超参数的选择会直接影响模型的性能和训练过程。不同的超参数设定可能会导致模型的欠拟合或过拟合，因此需要通过实验和验证来选择最佳的超参数组合。</p><hr><h3 id="数据漂移"><a href="#数据漂移" class="headerlink" title="数据漂移"></a>数据漂移</h3><p>数据漂移（Data Drift）是指在机器学习模型部署后，训练数据和实际应用数据之间的分布发生变化的现象。简单来说，数据漂移是指模型训练时使用的数据与实际应用时的数据不一致的情况。</p><p>数据漂移对机器学习模型的影响可以是两种情况：</p><ol><li>概念漂移（Concept Drift）：概念漂移是指实际应用中的目标变量或决策边界发生变化的情况。例如，在一个电商推荐系统中，用户的偏好可能会随着时间的推移而发生变化，导致模型在推荐时的准确性下降。</li><li>特征漂移（Feature Drift）：特征漂移是指实际应用中的特征分布发生变化的情况。例如，在一个航空公司的客户分类模型中，如果新的特征数据中包含了之前未见过的特征，那么模型就会面临特征漂移的问题。</li></ol><hr><h3 id="Azure中的ML"><a href="#Azure中的ML" class="headerlink" title="Azure中的ML"></a>Azure中的ML</h3><p>Azure Studio中各个标签</p><p><img src="/images/machinelearning/Azure_ML.png"></p><p>按上述过程和特点绘制一个Azure中ML的流程。</p><p><img src="/images/machinelearning/process_on_Azure.png"></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/machinelearning/1.jpg&quot;&gt;&lt;br&gt;Azure Machine Learning（Azure ML）是微软Azure云平台上的一项机器学习服务，它旨在简化和加速机器学习模型的开发、训练、部署和管理。&lt;/p&gt;</summary>
     
     
     
