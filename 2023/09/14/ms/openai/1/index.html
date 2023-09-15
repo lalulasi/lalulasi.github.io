@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Azure OpenAI Begining - lalulasiのブログ</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="lalulasiのブログ"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="lalulasiのブログ"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Azure OpenAI 服务通过 OpenAI GPT-4、GPT-3、Codex 和 DALL-E 模型为客户提供高级语言 AI，并能够实现 Azure 的安全性和企业前景。 Azure OpenAI 与 OpenAI 共同开发 API，确保兼容性的同时能够实现二者之间的平稳过渡。使用 Azure OpenAI，客户可在运行与 OpenAI 相同的模型时获得 Microsoft Azure 的"><meta property="og:type" content="blog"><meta property="og:title" content="Azure OpenAI Begining"><meta property="og:url" content="http://lalulasi.github.io/2023/09/14/ms/openai/1/"><meta property="og:site_name" content="lalulasiのブログ"><meta property="og:description" content="Azure OpenAI 服务通过 OpenAI GPT-4、GPT-3、Codex 和 DALL-E 模型为客户提供高级语言 AI，并能够实现 Azure 的安全性和企业前景。 Azure OpenAI 与 OpenAI 共同开发 API，确保兼容性的同时能够实现二者之间的平稳过渡。使用 Azure OpenAI，客户可在运行与 OpenAI 相同的模型时获得 Microsoft Azure 的"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://lalulasi.github.io/images/Azure/thumbnail.png"><meta property="article:published_time" content="2023-09-14T14:35:00.000Z"><meta property="article:modified_time" content="2023-09-15T02:47:26.888Z"><meta property="article:author" content="jun.luo"><meta property="article:tag" content="microsoft"><meta property="article:tag" content="Azure"><meta property="article:tag" content="OpenAI"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://lalulasi.github.io/images/Azure/thumbnail.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://lalulasi.github.io/2023/09/14/ms/openai/1/"},"headline":"Azure OpenAI Begining","image":["http://lalulasi.github.io/images/Azure/thumbnail.png"],"datePublished":"2023-09-14T14:35:00.000Z","dateModified":"2023-09-15T02:47:26.888Z","author":{"@type":"Person","name":"jun.luo"},"publisher":{"@type":"Organization","name":"lalulasiのブログ","logo":{"@type":"ImageObject","url":{"light":"/images/logo.svg","dark":"/images/logo.svg"}}},"description":"Azure OpenAI 服务通过 OpenAI GPT-4、GPT-3、Codex 和 DALL-E 模型为客户提供高级语言 AI，并能够实现 Azure 的安全性和企业前景。 Azure OpenAI 与 OpenAI 共同开发 API，确保兼容性的同时能够实现二者之间的平稳过渡。使用 Azure OpenAI，客户可在运行与 OpenAI 相同的模型时获得 Microsoft Azure 的"}</script><link rel="canonical" href="http://lalulasi.github.io/2023/09/14/ms/openai/1/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="lalulasiのブログ" type="application/atom+xml">
+</head><body class="is-2-column"><script type="text/javascript" src="/js/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"><img class="logo-img-dark" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-14T14:35:00.000Z" title="2023/9/14 22:35:00">2023-09-14</time>发表</span><span class="level-item"><time dateTime="2023-09-15T02:47:26.888Z" title="2023/9/15 10:47:26">2023-09-15</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/AI-IOT/">AI&amp;IOT</a></span><span class="level-item">23 分钟读完 (大约3382个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Azure OpenAI Begining</h1><div class="content"><p><img src="/images/openai/azure_openai.png"><br>Azure OpenAI 服务通过 OpenAI GPT-4、GPT-3、Codex 和 DALL-E 模型为客户提供高级语言 AI，并能够实现 Azure 的安全性和企业前景。 Azure OpenAI 与 OpenAI 共同开发 API，确保兼容性的同时能够实现二者之间的平稳过渡。<br>使用 Azure OpenAI，客户可在运行与 OpenAI 相同的模型时获得 Microsoft Azure 的安全功能。 Azure OpenAI 提供专用网络、区域可用性和负责任 AI 内容筛选功能。</p>
+<span id="more"></span>
+<h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><p>深度学习（Deep Learning）（也称为深度结构学习【Deep Structured Learning】、层次学习【Hierarchical Learning】或者是深度机器学习【Deep Machine Learning】）是⼀类算法集合，是机器学习的⼀个分⽀。</p>
+<ul>
+<li><strong>定义</strong>：深度学习是一种机器学习方法，它试图通过模拟人类大脑神经网络的工作方式来学习和理解数据。深度学习模型通常包括多层神经网络，这些网络可以自动从数据中提取特征并进行预测或分类。</li>
+<li><strong>应用</strong>：深度学习已经在计算机视觉、自然语言处理、语音识别、推荐系统等领域取得了巨大的成功。一些著名的深度学习架构包括卷积神经网络（CNN）、循环神经网络（RNN）和变换器（Transformer）等。</li>
+<li><strong>训练方式</strong>：深度学习模型通常通过监督学习进行训练，即提供输入和相应的目标输出，然后模型通过损失函数来调整自己的权重以最小化预测错误。</li>
+</ul>
+<hr>
+<h3 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h3><ul>
+<li><strong>定义</strong>：强化学习是一种机器学习范式，其中智能体通过与环境互动来学习如何做出决策以最大化累积奖励。强化学习的目标是找到一个策略，该策略可以在不断的试验和错误中改进，以获得最大的奖励。</li>
+<li><strong>应用</strong>：强化学习在自动驾驶、游戏玩法、机器人控制、金融交易等领域有广泛的应用。例如，AlphaGo就是一个使用强化学习技术的国际象棋和围棋程序。</li>
+<li><strong>训练方式</strong>：强化学习模型通常不依赖于带有标签的数据，而是通过试错和探索来学习。模型根据环境的反馈，即奖励信号，来调整策略，以获得更好的奖励。</li>
+</ul>
+<hr>
+<h3 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h3><ul>
+<li><strong>定义</strong>：迁移学习是一种机器学习方法，旨在通过将一个领域或任务中学到的知识应用于另一个相关的领域或任务，来提高性能。迁移学习的关键思想是，通过利用已有的知识，可以加速新领域或任务的学习过程。</li>
+<li><strong>应用</strong>：迁移学习广泛应用于自然语言处理、计算机视觉、医疗诊断等领域。例如，可以使用在大规模图像分类任务上训练的模型来加速小规模图像分类任务的训练，从而节省时间和资源。</li>
+<li><strong>方法</strong>：迁移学习的方法包括特征提取、模型微调和知识传输等技术。特征提取可以使用从源任务中学到的特征来表示目标任务的数据，模型微调可以通过微调源任务的模型权重来适应目标任务，知识传输可以将源任务的模型层次或知识结构应用于目标任务。</li>
+</ul>
+<hr>
+<h3 id="元学习"><a href="#元学习" class="headerlink" title="元学习"></a>元学习</h3><ul>
+<li><strong>定义</strong>：元学习是一种机器学习方法，旨在训练模型以在面对新任务时更快地适应和学习。元学习的目标是使模型能够在只有少量训练示例的情况下快速学习新任务，而不是依赖大量的训练数据。</li>
+<li><strong>应用</strong>：元学习通常用于具有快速适应性要求的领域，如机器人控制、优化问题、少样本学习等。例如，元学习可以用于训练一个模型，使其能够在看到几个样本后快速识别新的手写数字。</li>
+<li><strong>方法</strong>：元学习的方法包括模型架构设计、损失函数设计和元学习算法的开发。一种常见的元学习方法是元学习优化器，它可以训练模型以快速适应不同的任务。</li>
+</ul>
+<hr>
+<h3 id="LLM"><a href="#LLM" class="headerlink" title="LLM"></a>LLM</h3><p>大型语言模型，也称大语言模型、大模型（Large Language Model，LLM；Large Language Models，LLMs)。<br>大语言模型是一种深度学习模型，特别是属于自然语言处理（NLP）的领域，一般是指包含数干亿（或更多）参数的语言模型，这些参数是在大量文本数据上训练的，例如模型GPT-3，PaLM，LLaMA等，大语言模型的目的是理解和生成自然语言，通过学习大量的文本数据来预测下一个词或生成与给定文本相关的内容。<br>可以这么通俗的理解：<strong>如果一个模型”足够大”，那它就可以称为大模型</strong>。</p>
+<p>GPT，全称”Generative Pre-training Transformer”</p>
+<p><img src="/images/openai/gpt.png"></p>
+<p>LLM（Large Language Model）是指大型语言模型，它是基于深度学习技术训练的能够自动生成自然语言文本的模型。LLM的特点和原理如下：</p>
+<ol>
+<li>大规模训练数据：LLM的训练需要大规模的文本数据作为语料，这些数据可以是从互联网上抓取的网页、新闻文章、书籍等。大规模训练数据可以提供丰富的语言知识和上下文信息，有助于模型学习到更准确的语言模式和规律。</li>
+<li>深度神经网络架构：LLM通常采用深度神经网络作为模型架构，其中常见的是基于循环神经网络（RNN）或其变种（如LSTM、GRU）的模型。这是因为RNN能够处理序列数据，并具有记忆能力，能够捕捉到文本中的上下文信息。</li>
+<li>自监督学习：LLM的训练过程通常采用自监督学习的方法。自监督学习是指利用模型自身生成的文本作为训练目标，通过最大化预测下一个单词的概率来进行训练。模型通过前面的单词预测下一个单词，并将预测结果与真实的下一个单词进行比较，通过反向传播算法来更新模型的参数，不断优化模型的预测能力。</li>
+<li>预训练和微调：LLM的训练通常分为两个阶段：预训练和微调。预训练阶段使用大规模的无标签数据进行训练，以学习到通用的语言表示。然后，在预训练好的模型基础上，使用有标签的任务数据进行微调，以适应具体的任务和领域。</li>
+<li>生成文本：训练完成的LLM可以用于生成文本。给定一个初始文本序列，模型根据已有的上下文信息，预测下一个单词，并将预测结果作为输入与已有的文本序列拼接，再次进行预测，重复该过程直到生成所需长度的文本。<br>LLM的优点是可以生成高质量的自然语言文本，具有很强的语言模型能力。然而，LLM也面临一些挑战，如训练时间长、资源消耗大、对大规模数据的依赖等。因此，在实际应用中需要权衡利弊，并根据具体需求选择合适的模型和训练策略。</li>
+</ol>
+<hr>
+<h3 id="嵌入模型和补全模型"><a href="#嵌入模型和补全模型" class="headerlink" title="嵌入模型和补全模型"></a>嵌入模型和补全模型</h3><p>嵌入模型（Embedding Model）和补全模型（Completion Model）是深度学习领域中的两种不同类型的模型，它们用于不同的任务和应用。</p>
+<p><strong>嵌入模型（Embedding Model）</strong>：</p>
+<ol>
+<li><strong>定义</strong>：嵌入模型是一种用于将高维数据映射到低维表示的模型。它通过学习数据的嵌入（embedding）表示，将数据的特征映射到一个连续的向量空间中，从而捕获数据的语义信息。</li>
+<li><strong>应用</strong>：嵌入模型常常用于自然语言处理（NLP）和推荐系统等领域。在NLP中，词嵌入模型（如Word2Vec、GloVe）将单词映射到低维向量空间，以便在计算单词之间的语义相似度时更加有效。在推荐系统中，用户和物品的嵌入模型可以用于学习用户兴趣和物品特征。</li>
+<li><strong>训练方式</strong>：嵌入模型通常通过大规模数据集进行无监督训练。训练过程旨在最大化或最小化特定的相似度或损失函数，以使嵌入向量能够捕获数据之间的关系。</li>
+<li><strong>嵌入模型的例子</strong>：词嵌入模型在自然语言处理中的应用。</li>
+</ol>
+<ul>
+<li><strong>任务</strong>：文本分类。</li>
+<li><strong>示例</strong>：假设我们有一个文本分类任务，需要判断一篇新闻文章的主题。为了将文本数据表示成机器学习模型可以理解的形式，我们可以使用词嵌入模型，如Word2Vec。这个模型将单词映射到低维向量空间，使得相似含义的单词在向量空间中更接近。通过将文章中的单词嵌入向量取平均或进行其他组合，我们可以将文章表示成一个连续的向量，然后用于文本分类任务。</li>
+</ul>
+<hr>
+<p><strong>补全模型（Completion Model）</strong>：</p>
+<ol>
+<li><strong>定义</strong>：补全模型是一种用于预测、生成或填补缺失数据的模型。它的目标是根据给定的部分信息来生成完整的数据。</li>
+<li><strong>应用</strong>：补全模型在图像生成、自动文本生成、音频恢复、推荐系统中的填充用户-物品关系矩阵等任务中有广泛应用。例如，生成对抗网络（GANs）是一种常用于图像生成和生成式模型训练的补全模型。</li>
+<li><strong>训练方式</strong>：补全模型的训练方式因任务而异。例如，在图像生成任务中，可以使用GANs进行对抗训练，其中生成器模型试图生成逼真的图像，而判别器模型试图区分生成的图像和真实图像。</li>
+<li><strong>补全模型的例子</strong>：生成对抗网络（GANs）在图像生成中的应用。</li>
+</ol>
+<ul>
+<li><strong>任务</strong>：生成逼真的人脸图像。</li>
+<li><strong>示例</strong>：假设我们希望生成逼真的人脸图像，但我们只有有限数量的训练数据。我们可以使用生成对抗网络（GANs）来解决这个问题。GAN包括一个生成器和一个判别器，它们在对抗过程中相互训练。生成器负责生成图像，而判别器负责区分生成的图像和真实的图像。随着训练的进行，生成器逐渐学会生成逼真的人脸图像，从而可以用于图像生成任务。</li>
+</ul>
+<hr>
+<h3 id="Fine-tune"><a href="#Fine-tune" class="headerlink" title="Fine-tune"></a>Fine-tune</h3><p>“Fine-tune” 是一个在机器学习和深度学习中经常使用的术语，它指的是在一个已经训练过的模型基础上，继续对模型的参数进行微小的调整，以适应特定任务或数据集。Fine-tuning通常用于以下情况：</p>
+<ol>
+<li><strong>迁移学习</strong>：在迁移学习中，一个已经在一个任务或领域上训练得很好的模型可以被复用，并在不同但相关的任务或领域上进行 fine-tune，以加速训练并提高性能。这可以通过微调模型的权重来实现，使其适应新任务的需求。</li>
+<li><strong>小样本学习</strong>：当你面对的任务有非常有限的训练数据时，可以使用一个在大规模数据上预训练的模型，然后在小样本数据上 fine-tune。通过利用预训练模型的知识，可以更好地适应小样本数据，提高模型的性能。</li>
+<li><strong>个性化推荐</strong>：在推荐系统中，可以使用一个通用的模型，如协同过滤或内容过滤，然后根据用户的行为和反馈信息对模型进行 fine-tune，以提供个性化的推荐结果。</li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Azure OpenAI Begining</p><p><a href="http://lalulasi.github.io/2023/09/14/ms/openai/1/">http://lalulasi.github.io/2023/09/14/ms/openai/1/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>jun.luo</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-14</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-09-15</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/microsoft/">microsoft</a><a class="link-muted mr-2" rel="tag" href="/tags/Azure/">Azure</a><a class="link-muted mr-2" rel="tag" href="/tags/OpenAI/">OpenAI</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/14/ms/ml/1/"><span class="level-item">Azure Machine Learning Begining</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#深度学习"><span class="level-left"><span class="level-item">深度学习</span></span></a></li><li><a class="level is-mobile" href="#强化学习"><span class="level-left"><span class="level-item">强化学习</span></span></a></li><li><a class="level is-mobile" href="#迁移学习"><span class="level-left"><span class="level-item">迁移学习</span></span></a></li><li><a class="level is-mobile" href="#元学习"><span class="level-left"><span class="level-item">元学习</span></span></a></li><li><a class="level is-mobile" href="#LLM"><span class="level-left"><span class="level-item">LLM</span></span></a></li><li><a class="level is-mobile" href="#嵌入模型和补全模型"><span class="level-left"><span class="level-item">嵌入模型和补全模型</span></span></a></li><li><a class="level is-mobile" href="#Fine-tune"><span class="level-left"><span class="level-item">Fine-tune</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/2023/09/14/ms/openai/1/"><img src="/images/Azure/thumbnail.png" alt="Azure OpenAI Begining"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-14T14:35:00.000Z">2023-09-14</time></p><p class="title"><a href="/2023/09/14/ms/openai/1/">Azure OpenAI Begining</a></p><p class="categories"><a href="/categories/AI-IOT/">AI&amp;IOT</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/14/ms/ml/1/"><img src="/images/Azure/thumbnail.png" alt="Azure Machine Learning Begining"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-14T13:50:00.000Z">2023-09-14</time></p><p class="title"><a href="/2023/09/14/ms/ml/1/">Azure Machine Learning Begining</a></p><p class="categories"><a href="/categories/AI-IOT/">AI&amp;IOT</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/13/ms/Azure/1/"><img src="/images/Azure/thumbnail.png" alt="Azure Begining"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-13T11:15:00.000Z">2023-09-13</time></p><p class="title"><a href="/2023/09/13/ms/Azure/1/">Azure Begining</a></p><p class="categories"><a href="/categories/AI-IOT/">AI&amp;IOT</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/28/java/concurrency/4/"><img src="/images/java/thumbnail.jpg" alt="JUC原子类"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-28T05:57:00.000Z">2023-03-28</time></p><p class="title"><a href="/2023/03/28/java/concurrency/4/">JUC原子类</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/03/24/java/concurrency/3/"><img src="/images/java/thumbnail.jpg" alt="Java Lock"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-03-24T07:05:00.000Z">2023-03-24</time></p><p class="title"><a href="/2023/03/24/java/concurrency/3/">Java Lock</a></p><p class="categories"><a href="/categories/java/">java</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/AI-IOT/"><span class="level-start"><span class="level-item">AI&amp;IOT</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/C/"><span class="level-start"><span class="level-item">C#</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/"><span class="level-start"><span class="level-item">日本語</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Azure/"><span class="tag">Azure</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CS/"><span class="tag">CS</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OpenAI/"><span class="tag">OpenAI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning/"><span class="tag">machine learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/microsoft/"><span class="tag">microsoft</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/others/"><span class="tag">others</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"><span class="tag">日本語</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A0%87%E5%87%86%E6%97%A5%E8%AF%AD/"><span class="tag">标准日语</span><span class="tag">24</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"><img class="logo-img-dark" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"></a><p class="is-size-7"><span>&copy; 2023 jun.luo</span>   © lalulasi Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><div style="font-size: 13px;"><div><span id="busuanzi_container_site_uv" style="display: inline;">❤️ 感谢<span id="busuanzi_value_site_uv"></span>位小伙伴的</span><span id="busuanzi_container_site_pv" style="display: inline;"><span id="busuanzi_value_site_pv"></span>次陪伴</span></div></div></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/universe.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

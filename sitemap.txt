@@ -1,3 +1,4 @@
+http://lalulasi.github.io/2023/09/14/ms/openai/1/
 http://lalulasi.github.io/2023/09/14/ms/ml/1/
 http://lalulasi.github.io/2023/09/13/ms/Azure/1/
 http://lalulasi.github.io/2023/03/28/java/concurrency/4/
@@ -43,6 +44,7 @@ http://lalulasi.github.io/tags/microsoft/
 http://lalulasi.github.io/tags/Azure/
 http://lalulasi.github.io/tags/others/
 http://lalulasi.github.io/tags/machine-learning/
+http://lalulasi.github.io/tags/OpenAI/
 http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/
 http://lalulasi.github.io/categories/C/
 http://lalulasi.github.io/categories/java/
