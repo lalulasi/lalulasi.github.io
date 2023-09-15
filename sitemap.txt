@@ -1,5 +1,5 @@
-http://lalulasi.github.io/2023/09/14/ms/openai/1/
 http://lalulasi.github.io/2023/09/14/ms/ml/1/
+http://lalulasi.github.io/2023/09/14/ms/openai/1/
 http://lalulasi.github.io/2023/09/13/ms/Azure/1/
 http://lalulasi.github.io/2023/03/28/java/concurrency/4/
 http://lalulasi.github.io/2023/03/24/java/concurrency/3/
