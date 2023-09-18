@@ -1,3 +1,4 @@
+http://lalulasi.github.io/2023/09/18/env/docker/1/
 http://lalulasi.github.io/2023/09/14/ms/ml/1/
 http://lalulasi.github.io/2023/09/14/ms/openai/1/
 http://lalulasi.github.io/2023/09/13/ms/Azure/1/
@@ -45,7 +46,11 @@ http://lalulasi.github.io/tags/Azure/
 http://lalulasi.github.io/tags/others/
 http://lalulasi.github.io/tags/machine-learning/
 http://lalulasi.github.io/tags/OpenAI/
+http://lalulasi.github.io/tags/docker/
+http://lalulasi.github.io/tags/k8s/
+http://lalulasi.github.io/tags/container/
 http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/
 http://lalulasi.github.io/categories/C/
 http://lalulasi.github.io/categories/java/
 http://lalulasi.github.io/categories/AI-IOT/
+http://lalulasi.github.io/categories/environment/
