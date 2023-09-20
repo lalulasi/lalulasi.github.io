@@ -1,3 +1,4 @@
+http://lalulasi.github.io/2023/09/20/env/docker/2/
 http://lalulasi.github.io/2023/09/18/env/docker/1/
 http://lalulasi.github.io/2023/09/14/ms/ml/1/
 http://lalulasi.github.io/2023/09/14/ms/openai/1/
