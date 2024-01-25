@@ -1,3 +1,6 @@
+http://lalulasi.github.io/2024/01/25/ms/network/1/
+http://lalulasi.github.io/2023/09/29/env/k8s/2/
+http://lalulasi.github.io/2023/09/28/env/k8s/1/
 http://lalulasi.github.io/2023/09/20/env/docker/2/
 http://lalulasi.github.io/2023/09/18/env/docker/1/
 http://lalulasi.github.io/2023/09/14/ms/ml/1/
@@ -50,6 +53,7 @@ http://lalulasi.github.io/tags/OpenAI/
 http://lalulasi.github.io/tags/docker/
 http://lalulasi.github.io/tags/k8s/
 http://lalulasi.github.io/tags/container/
+http://lalulasi.github.io/tags/network/
 http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/
 http://lalulasi.github.io/categories/C/
 http://lalulasi.github.io/categories/java/

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>K8S初识与简单部署（二） - lalulasiのブログ</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="lalulasiのブログ"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="lalulasiのブログ"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="目前生产部署Kubernetes集群有三种方式：1.kubeadm搭建（推荐）是⼀个K8s部署⼯具，提供kubeadm init和kubeadm join⽤于快速搭建k8s集群，⽐较推荐。 2.⼆进制包搭建从github下载发⾏版的⼆进制包，⼿动部署每个组件， 组成Kubernetes集群可以了解底层，但是步骤繁琐，坑⽐较多。 3.Minikube搭建：是⼀种轻量化的Kubernetes集群，是k"><meta property="og:type" content="blog"><meta property="og:title" content="K8S初识与简单部署（二）"><meta property="og:url" content="http://lalulasi.github.io/2023/09/29/env/k8s/2/"><meta property="og:site_name" content="lalulasiのブログ"><meta property="og:description" content="目前生产部署Kubernetes集群有三种方式：1.kubeadm搭建（推荐）是⼀个K8s部署⼯具，提供kubeadm init和kubeadm join⽤于快速搭建k8s集群，⽐较推荐。 2.⼆进制包搭建从github下载发⾏版的⼆进制包，⼿动部署每个组件， 组成Kubernetes集群可以了解底层，但是步骤繁琐，坑⽐较多。 3.Minikube搭建：是⼀种轻量化的Kubernetes集群，是k"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://lalulasi.github.io/images/k8s/thumbnail.png"><meta property="article:published_time" content="2023-09-29T02:21:00.000Z"><meta property="article:modified_time" content="2023-09-29T02:45:25.649Z"><meta property="article:author" content="jun.luo"><meta property="article:tag" content="docker"><meta property="article:tag" content="k8s"><meta property="article:tag" content="container"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://lalulasi.github.io/images/k8s/thumbnail.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://lalulasi.github.io/2023/09/29/env/k8s/2/"},"headline":"K8S初识与简单部署（二）","image":["http://lalulasi.github.io/images/k8s/thumbnail.png"],"datePublished":"2023-09-29T02:21:00.000Z","dateModified":"2023-09-29T02:45:25.649Z","author":{"@type":"Person","name":"jun.luo"},"publisher":{"@type":"Organization","name":"lalulasiのブログ","logo":{"@type":"ImageObject","url":{"light":"/images/logo.svg","dark":"/images/logo.svg"}}},"description":"目前生产部署Kubernetes集群有三种方式：1.kubeadm搭建（推荐）是⼀个K8s部署⼯具，提供kubeadm init和kubeadm join⽤于快速搭建k8s集群，⽐较推荐。 2.⼆进制包搭建从github下载发⾏版的⼆进制包，⼿动部署每个组件， 组成Kubernetes集群可以了解底层，但是步骤繁琐，坑⽐较多。 3.Minikube搭建：是⼀种轻量化的Kubernetes集群，是k"}</script><link rel="canonical" href="http://lalulasi.github.io/2023/09/29/env/k8s/2/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="lalulasiのブログ" type="application/atom+xml">
+</head><body class="is-2-column"><script type="text/javascript" src="/js/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"><img class="logo-img-dark" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-09-29T02:21:00.000Z" title="2023/9/29 10:21:00">2023-09-29</time>发表</span><span class="level-item"><time dateTime="2023-09-29T02:45:25.649Z" title="2023/9/29 10:45:25">2023-09-29</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/environment/">environment</a></span><span class="level-item">7 分钟读完 (大约1025个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">K8S初识与简单部署（二）</h1><div class="content"><p><img src="/images/k8s/OIP-C.jpg"><br>目前生产部署Kubernetes集群有三种方式：1.kubeadm搭建（推荐）是⼀个K8s部署⼯具，提供kubeadm init和kubeadm join⽤于快速搭建k8s集群，⽐较推荐。 2.⼆进制包搭建从github下载发⾏版的⼆进制包，⼿动部署每个组件， 组成Kubernetes集群可以了解底层，但是步骤繁琐，坑⽐较多。 3.Minikube搭建：是⼀种轻量化的Kubernetes集群，是k8s社区为了帮助开<br>发者和学习者能够更好学习和体验k8s功能⽽推出的，使⽤个⼈PC的虚拟化环境就快速构建启动单节点k8s。</p>
+<span id="more"></span>
+<h3 id="K8S常⻅集群架构和搭建⽅式"><a href="#K8S常⻅集群架构和搭建⽅式" class="headerlink" title="K8S常⻅集群架构和搭建⽅式"></a>K8S常⻅集群架构和搭建⽅式</h3><p>k8s集群类型有多种</p>
+<ul>
+<li>单master-Node集群<ul>
+<li>⼀主多从，推荐测试环境</li>
+<li>服务器要求：服务器要求⾄少2台2核4G以上的云服务器</li>
+</ul>
+</li>
+<li>多master-Node集群<ul>
+<li>多主多从（⾼可⽤集群），推荐⽣产环境使⽤</li>
+<li>服务器要求：服务器要求⾄少4台2核4G以上的云服务器</li>
+</ul>
+</li>
+<li>单节点k8s集群<ul>
+<li>单⼀个节点</li>
+<li>服务器要求：服务器要求⾄少⼀台2核4G以上的云服务器</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于KubeAdm搭建多节点K8S集群"><a href="#基于KubeAdm搭建多节点K8S集群" class="headerlink" title="基于KubeAdm搭建多节点K8S集群"></a>基于KubeAdm搭建多节点K8S集群</h3><ul>
+<li>安装步骤<ul>
+<li><p>安装docker（主节点+⼯作节点）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.先安装yml</span></span><br><span class="line">yum install -y yum-utils device-mapperpersistent-data lvm2</span><br><span class="line"><span class="comment"># 2.设置阿⾥云镜像</span></span><br><span class="line">sudo yum-config-manager --add-repo</span><br><span class="line">http://mirrors.aliyun.com/dockerce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="comment"># 3.查看可安装的docker版本</span></span><br><span class="line">yum list docker-ce --showduplicates | <span class="built_in">sort</span> -r</span><br><span class="line"><span class="comment">#4. 安装docker</span></span><br><span class="line">配置阿⾥云镜像源（主节点+⼯作节点）</span><br><span class="line">yum -y install docker-ce-20.10.10-3.el7</span><br><span class="line"><span class="comment">#5. 查看docker版本</span></span><br><span class="line">docker -v</span><br><span class="line"><span class="comment">#配置开机⾃启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker.service</span><br><span class="line"><span class="comment">#6. 启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#7. 查看docker 启动状态</span></span><br><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装docker（主节点+⼯作节点）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">[kubernetes]</span></span><br><span class="line"><span class="string">name=Kubernetes</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/kubernetes/y</span></span><br><span class="line"><span class="string">um/repos/kubernetes-el7-x86_64</span></span><br><span class="line"><span class="string">enabled=1</span></span><br><span class="line"><span class="string">gpgcheck=0</span></span><br><span class="line"><span class="string">repo_gpgcheck=0</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/kubernetes/yu</span></span><br><span class="line"><span class="string">m/doc/yum-key.gpg</span></span><br><span class="line"><span class="string">https://mirrors.aliyun.com/kubernetes/yum/doc/r</span></span><br><span class="line"><span class="string">pm-package-key.gpg</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装kubelet kubeadm kubectl（主节点+⼯作节点）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y kubelet-1.18.0 kubeadm-1.18.0 kubectl-1.18.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主节点初始化（主节点）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --apiserver-advertise-address=192.168.80.100 \</span><br><span class="line">--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">--kubernetes-version v1.18.0 --service-cidr=10.96.0.0/12 \</span><br><span class="line">--pod-network-cidr=10.244.0.0/16</span><br></pre></td></tr></table></figure>
+<p>  说明：<br>  –apiserver-advertise-address：主节点的内⽹ip地址<br>  –image-repository 镜像仓库<br>  –kubernetes-version k8s版本<br>  –service-cidr + –pod-network-cidr ⽹段不重复即可</p>
+</li>
+<li><p>当初始化完成之后执⾏命令，并加⼊⼯作节点</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubeadm <span class="built_in">join</span> 192.168.80.100:6443 --token pico8c.yrkwjat5y0pkuuvu \</span><br><span class="line">--discovery-token-ca-cert-hash sha256:a3204d28e353fc1d0ac3e80c181108a367d8sdsb4770csd69d3a107bad850d2b8072e3f9</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主节点执⾏命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加⼊⼯作节点</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$HOME</span>/.kube</span><br><span class="line">sudo <span class="built_in">cp</span> -i /etc/kubernetes/admin.conf <span class="variable">$HOME</span>/.kube/config</span><br><span class="line">sudo <span class="built_in">chown</span> $(<span class="built_in">id</span> -u):$(<span class="built_in">id</span> -g) <span class="variable">$HOME</span>/.kube/config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看节点</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl get nodes</span><br><span class="line"><span class="comment">#状态都是NotReady，需要配置⽹络插件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装网络插件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看节点状态</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看系统pod状态</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods -n kube-system</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="基于K8S集群部署第⼀个K8S应⽤"><a href="#基于K8S集群部署第⼀个K8S应⽤" class="headerlink" title="基于K8S集群部署第⼀个K8S应⽤"></a>基于K8S集群部署第⼀个K8S应⽤</h3><ul>
+<li><p>查看k8s集群信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl cluster-info</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看k8s集群信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get node</span><br></pre></td></tr></table></figure>
+<p>  <img src="/images/k8s/get_node.png"></p>
+</li>
+<li><p>查看内部组件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod -A</span><br></pre></td></tr></table></figure>
+<p>  <img src="/images/k8s/get_con.png"></p>
+</li>
+<li><p>部署第⼀个K8S应⽤-Nginx，并通过公⽹ip访问</p>
+<ul>
+<li><p>创建deployment（Pod控制器的⼀种）</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create deployment xdclass-nginx --image=nginx:1.23.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看deployment和pod</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deployment,pod,svc</span><br></pre></td></tr></table></figure>
+<p>  <img src="/images/k8s/get_con.png"></p>
+</li>
+<li><p>暴露80端⼝，创建service</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose deployment xdclass-nginx --port=80 --<span class="built_in">type</span>=NodePort</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看端⼝映射</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pod,svc</span><br></pre></td></tr></table></figure>
+<p>  <img src="/images/k8s/check_port.png"></p>
+</li>
+<li><p>在浏览器访问, ⼯作节点开放端⼝31512，访问⼯作节点ip：31512（⽹络安全组记得开放31512端⼝）master、node节点访问这个 开放的端⼝都可以。</p>
+<p>  <img src="/images/k8s/nginx.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>K8S初识与简单部署（二）</p><p><a href="http://lalulasi.github.io/2023/09/29/env/k8s/2/">http://lalulasi.github.io/2023/09/29/env/k8s/2/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>jun.luo</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-09-29</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2023-09-29</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/docker/">docker</a><a class="link-muted mr-2" rel="tag" href="/tags/k8s/">k8s</a><a class="link-muted mr-2" rel="tag" href="/tags/container/">container</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2024/01/25/ms/network/1/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Network capture</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2023/09/28/env/k8s/1/"><span class="level-item">K8S初识与简单部署（一）</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#K8S常⻅集群架构和搭建⽅式"><span class="level-left"><span class="level-item">K8S常⻅集群架构和搭建⽅式</span></span></a></li><li><a class="level is-mobile" href="#基于KubeAdm搭建多节点K8S集群"><span class="level-left"><span class="level-item">基于KubeAdm搭建多节点K8S集群</span></span></a></li><li><a class="level is-mobile" href="#基于K8S集群部署第⼀个K8S应⽤"><span class="level-left"><span class="level-item">基于K8S集群部署第⼀个K8S应⽤</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/2024/01/25/ms/network/1/"><img src="/images/Azure/wireshark_thumb.png" alt="Network capture"></a></figure><div class="media-content"><p class="date"><time dateTime="2024-01-25T06:56:00.000Z">2024-01-25</time></p><p class="title"><a href="/2024/01/25/ms/network/1/">Network capture</a></p><p class="categories"><a href="/categories/AI-IOT/">AI&amp;IOT</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/29/env/k8s/2/"><img src="/images/k8s/thumbnail.png" alt="K8S初识与简单部署（二）"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-29T02:21:00.000Z">2023-09-29</time></p><p class="title"><a href="/2023/09/29/env/k8s/2/">K8S初识与简单部署（二）</a></p><p class="categories"><a href="/categories/environment/">environment</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/28/env/k8s/1/"><img src="/images/k8s/thumbnail.png" alt="K8S初识与简单部署（一）"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-28T14:32:00.000Z">2023-09-28</time></p><p class="title"><a href="/2023/09/28/env/k8s/1/">K8S初识与简单部署（一）</a></p><p class="categories"><a href="/categories/environment/">environment</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/20/env/docker/2/"><img src="/images/docker/thumbnail.png" alt="Docker镜像与容器"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-20T05:24:00.000Z">2023-09-20</time></p><p class="title"><a href="/2023/09/20/env/docker/2/">Docker镜像与容器</a></p><p class="categories"><a href="/categories/environment/">environment</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/2023/09/18/env/docker/1/"><img src="/images/docker/thumbnail.png" alt="Docker Begining（认识与安装）"></a></figure><div class="media-content"><p class="date"><time dateTime="2023-09-18T02:07:00.000Z">2023-09-18</time></p><p class="title"><a href="/2023/09/18/env/docker/1/">Docker Begining（认识与安装）</a></p><p class="categories"><a href="/categories/environment/">environment</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/01/"><span class="level-start"><span class="level-item">一月 2024</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/09/"><span class="level-start"><span class="level-item">九月 2023</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/03/"><span class="level-start"><span class="level-item">三月 2023</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/01/"><span class="level-start"><span class="level-item">一月 2023</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/AI-IOT/"><span class="level-start"><span class="level-item">AI&amp;IOT</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/C/"><span class="level-start"><span class="level-item">C#</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/environment/"><span class="level-start"><span class="level-item">environment</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">5</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/"><span class="level-start"><span class="level-item">日本語</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Azure/"><span class="tag">Azure</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C#</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CS/"><span class="tag">CS</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/OpenAI/"><span class="tag">OpenAI</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/container/"><span class="tag">container</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/java/"><span class="tag">java</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/k8s/"><span class="tag">k8s</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning/"><span class="tag">machine learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/microsoft/"><span class="tag">microsoft</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/network/"><span class="tag">network</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/others/"><span class="tag">others</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/"><span class="tag">日本語</span><span class="tag">24</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A0%87%E5%87%86%E6%97%A5%E8%AF%AD/"><span class="tag">标准日语</span><span class="tag">24</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"><img class="logo-img-dark" src="/images/logo.svg" alt="lalulasiのブログ" height="59" width="101"></a><p class="is-size-7"><span>&copy; 2024 jun.luo</span>   © lalulasi Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><div style="font-size: 13px;"><div><span id="busuanzi_container_site_uv" style="display: inline;">❤️ 感谢<span id="busuanzi_value_site_uv"></span>位小伙伴的</span><span id="busuanzi_container_site_pv" style="display: inline;"><span id="busuanzi_value_site_pv"></span>次陪伴</span></div></div></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><script src="/js/universe.js"></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

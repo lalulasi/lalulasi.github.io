@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lalulasi.github.io/2024/01/25/ms/network/1/</loc>
+    
+    <lastmod>2024-01-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lalulasi.github.io/2023/09/29/env/k8s/2/</loc>
+    
+    <lastmod>2023-09-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lalulasi.github.io/2023/09/28/env/k8s/1/</loc>
+    
+    <lastmod>2023-09-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lalulasi.github.io/2023/09/20/env/docker/2/</loc>
     
     <lastmod>2023-09-20</lastmod>
@@ -346,7 +373,7 @@
 
   <url>
     <loc>http://lalulasi.github.io/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -354,91 +381,98 @@
   
   <url>
     <loc>http://lalulasi.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/%E6%A0%87%E5%87%86%E6%97%A5%E8%AF%AD/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/C/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/CS/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/java/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/microsoft/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/Azure/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/others/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/machine-learning/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/OpenAI/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/docker/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/k8s/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/tags/container/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lalulasi.github.io/tags/network/</loc>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -447,35 +481,35 @@
   
   <url>
     <loc>http://lalulasi.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/categories/C/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/categories/java/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/categories/AI-IOT/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lalulasi.github.io/categories/environment/</loc>
-    <lastmod>2023-09-20</lastmod>
+    <lastmod>2024-01-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
